@@ -1,0 +1,49 @@
+<div class="container-dia">
+  <div class="titulo">
+    <h2>Sección días</h2>
+    <button class="btn btn-outline-secondary" (click)="toggleSwitchDay()">Volver</button>
+  </div>
+
+  <div *ngIf="user.permiso_abrir_dias">
+    <h3>Alta de días</h3>
+    <form (submit)="createNewDay()">
+      <div class="mb-3">
+        <label for="dia" class="form-label">Día</label>
+        <input type="date" class="form-control" id="dia" [(ngModel)]="newDay" name="newDay">
+      </div>
+      <div class="div-btn">
+        <input type="submit" class="btn btn-primary" value="Dar Alta">
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="user.permiso_cerrar_dias">
+    <h3>Cierre de días</h3>
+    <span>Total día: {{totalDia | number: '1.2-2'}}</span>
+    <form (submit)="uploadAndCloseDay()">
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Sobrante</label>
+        <select (change)="calcularTotalDia()" class="form-select" id="fecha" required [(ngModel)]="closeDay" name="closeDay">          <option *ngFor="let activo of activos" [value]="activo.fecha | date: 'yyyy-MM-dd'">{{activo.fecha | date: 'dd/MM/yyyy' }}</option>
+        </select>
+      </div>
+        
+      <div class="mb-3">
+        <label for="sobrante" class="form-label">Sobrante</label>
+        <input type="number" class="form-control" id="sobrante" required [(ngModel)]="sobrante" name="sobrante" step="0.01">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="customFile">Excel de cálculos (opcional)</label>
+        <input type="file" class="form-control" id="customFile"
+          (change)="fileChange($event)"
+          accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+          application/vnd.ms-excel,text/comma-separated-values,
+          text/csv,
+          application/csv">
+      </div>
+      <div class="div-btn">
+        <input type="submit" class="btn btn-danger" value="Dar Baja">
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-lista">
+  <div class="titulo">
+    <h2>Lista de Recibos</h2>
+    <button class="btn btn-outline-secondary" (click)="toggleSwitchRecibo()">Volver</button>
+  </div>
+  <div [formGroup]="formGroupFechas">
+    <div class="fechas">
+      <div class="display-flex">
+        <label for="desde" class="form-label label-space">Desde:</label>
+        <input type="date" name="desde" formControlName="desde" class="form-control" id="desde">
+      </div>
+      <div class="display-flex">
+        <label for="desde" class="form-label label-space">Hasta:</label>
+        <input type="date" name="hasta" formControlName="hasta" class="form-control" id="hasta">
+      </div>
+      <button class="btn btn-primary btn-buscar" (click)="buscarPorFecha()">Buscar</button>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="mb-3 display-flex">
+      <label for="desde" class="form-label label-space">Cliente:</label>
+      <select class="form-select" id="id_cliente" name="id_cliente" [(ngModel)]="id_cliente" (change)="filtrarCliente()">
+        <option *ngFor="let client of clientes" [value]="client.id_cliente">
+          {{client.apellido != '' ? client.apellido + ', ' + client.nombre : client.nombre}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="col-numero">Nº</th>
+        <th scope="col" class="col-dia">Día</th>
+        <th scope="col" class="col-cliente">Cliente</th>
+        <th scope="col" class="col-importe">Importe</th>
+        <th scope="col" class="col-cerrado">Cerrado</th>
+        <th scope="col" class="col-ver">Ver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let caja of cajas, let i = index" [ngClass]="{'activo': !caja.activo}">
+        <td class="col-numero">{{caja.id_caja}}</td>
+        <td class="col-dia">{{caja.fecha_fecha | date: 'dd/MM/yyyy'}}</td>
+        <td class="col-cliente">{{caja.cliente.apellido + ', ' + caja.cliente.nombre}}</td>
+        <td class="col-importe">{{(caja.efectivo + caja.transferencia + caja.sumaCheques) | number: '1.2-2'}}</td>
+        <td class="col-cerrado">{{caja.activo ? 'No' : 'Sí'}}</td>
+        <td class="col-ver"><a class="btn btn-primary" [href]="'/aft/'+caja.id_caja">Ver</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

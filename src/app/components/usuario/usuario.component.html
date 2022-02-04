@@ -1,0 +1,34 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="center-msj" *ngIf="msj !== ''">
+    <p class="alert alert-success" role="alert">
+      {{msj}}
+    </p>
+  </div>
+  <table class="table" *ngIf="showIndexUsuario">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha Alta</th>
+        <th scope="col">Activo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios, let i = index">
+        <td>{{user.username}}</td>
+        <td>{{user.nombre}}</td>
+        <td>{{user.fecha_alta | date: 'dd/MM/yyyy'}}</td>
+        <td>{{user.activo ? 'Sí' : 'No'}}</td>
+        <td><button class="btn btn-primary" (click)="toggleEditarUsuario(i)">Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-usuario-editar
+    *ngIf="!showIndexUsuario"
+    [user]="userToEdit"
+    (msj)="recibirMsj($event)"
+  ></app-usuario-editar>
+</div>

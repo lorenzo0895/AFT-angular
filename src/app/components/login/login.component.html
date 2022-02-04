@@ -1,0 +1,18 @@
+<div class="contenido">
+  <div class="formulario">
+    <h1>Login</h1>
+    <form>
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input [(ngModel)]="user.username" type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password">
+      </div>
+      <div class="div-btn">
+        <input type="submit" class="btn btn-primary" value="Ingresar" (click)="login()">
+      </div>
+    </form>
+  </div>
+</div>

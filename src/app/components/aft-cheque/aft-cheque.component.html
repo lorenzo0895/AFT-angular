@@ -1,0 +1,29 @@
+<div class="blur">
+  <div class="container-cheques">
+    <a href="/cheque" target="blank"><img src="../../../assets/img/plus-circle.svg" alt="agregar"></a>
+    <a (click)="actualizarCheques()" class="cursor-pointer"><img src="../../../assets/img/refresh.svg" alt="agregar"></a>
+    <img (click)="switchChequeMenu()" class="boton-cerrar" src="../../../assets/img/botonCerrar.png" alt="cerrar">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nº</th>
+          <th scope="col">Banco</th>
+          <th scope="col">Sucursal</th>
+          <th scope="col">CUIT</th>
+          <th scope="col">Importe</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cheque of cheques, let i = index">
+          <td>{{cheque.numero}}</td>
+          <td>{{cheque.banco}}</td>
+          <td>{{cheque.sucursal}}</td>
+          <td>{{cheque.cuit}}</td>
+          <td style="text-align: end;">{{cheque.importe | number: '0.2-2'}}</td>
+          <td><button (click)="agregarCheque(cheque)" class="btn btn-primary">Agregar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

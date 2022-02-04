@@ -1,0 +1,124 @@
+.encabezado {
+  margin: 50px 0;
+  display: none;
+}
+.encabezado img {
+  opacity: 0.5;
+  height: 70px;
+}
+.container-caja {
+  margin-top: 20px;
+}
+.center-msj {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: -30px;
+}
+.div-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.titulo {
+  display: flex;
+  align-items: center;
+}
+h2 {
+  margin-bottom: 0;
+}
+.titulo > .btn {
+  margin: 0 0 0 20px;
+  width: 90px;
+}
+.btn {
+  margin-left: 30px;
+}
+.detalle-section {
+  display: flex;
+}
+.detalle-div {
+  width: 100%;
+  display: flex;
+}
+.detalle-div > input {
+  display: inline;
+  width: 400px;
+}
+.detalle-div > .btn {
+  margin-left: 20px;
+}
+h3 {
+  margin-top: 20px;
+  width: 100%;
+}
+span {
+  font-size: 15px;
+}
+.div-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item {
+  min-width: 400px;
+  margin-right: 20px;
+}
+.btn-primary {
+  margin-left: 0;
+}
+input[type='number'] {
+  text-align: right;
+}
+.agregar-cheque {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.cheques-lista {
+  display: flex;
+  margin-bottom: 10px;
+}
+.cheques-lista > input {
+  width: 120px;
+  margin-right: 10px;
+}
+.cheques-lista > input[type="number"] {
+  text-align: end;
+}
+.item2 {
+  display: flex;
+}
+.item2 input {
+  width: 400px;
+  margin-right: 20px;
+}
+.item2 input[type="number"] {
+  width: 150px;
+}
+.cursor-pointer {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+@media print {
+  @page {
+    size: A3;
+    margin: 0;
+    margin-bottom: 50%;
+  }
+  .conceptos-section, .btn {
+    display: none;
+  }
+  .encabezado {
+    display: block;
+  }
+  .item {
+    min-width: 0;
+  }
+}

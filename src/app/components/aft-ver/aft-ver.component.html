@@ -1,0 +1,67 @@
+<app-nav></app-nav>
+<div class="container container-caja">
+  <div class="encabezado">
+    <h2><img src="../../../assets/img/logo-color-grande.png" alt="logo"> Estudio Impositivo Spallione</h2>
+  </div>
+  <div class="titulo">
+    <h2>Comprobante de Caja Nº {{caja ? caja.id_caja : 0}}</h2>
+    <a type="submit" href="/aft" class="btn btn-outline-secondary">Volver</a>
+    <button type="submit" class="btn btn-primary" (click)="print()">Imprimir</button>
+    <button type="submit" class="btn btn-danger" *ngIf="caja && caja.activo">Cerrar</button>
+  </div>
+  <div class="div-form">
+    <section>
+      <h3>Datos</h3>
+      <div class="item mb-3">
+        <label class="form-label">Cliente</label>
+        <input type="text" class="form-control" value="{{caja ? (caja.cliente.apellido + ', ' + caja.cliente.nombre) : ''}}" disabled>
+      </div>
+      <div class="item mb-3">
+        <label for="dia" class="form-label">Día</label>
+        <input type="date" class="form-control" value="{{caja ? caja.fecha_fecha : ''}}" disabled>
+      </div>
+    </section>
+    <section class="detalle-section">
+      <label for="detalle" class="form-label">Detalle</label>
+      <div class="detalle-div">
+        <input type="text" class="form-control" [(ngModel)]="detalle" id="detalle" name="detalle" disabled="{{caja ? !caja.activo : false}}">
+        <button *ngIf="caja && caja.activo" type="submit" class="btn btn-primary">Editar detalle</button>
+      </div>
+    </section>
+    <section>
+      <h3>Formas de Pago <span>El total es: {{total | number:'1.2-2'}}</span></h3>
+      <div class="item mb-3">
+        <label for="efectivo" class="form-label">Efectivo</label>
+        <input disabled type="number" class="form-control" value="{{caja ? caja.efectivo : ''}}" step="0.01">
+      </div>
+      <div class="item mb-3">
+        <label for="transferencia" class="form-label">Transferencia</label>
+        <input disabled type="number" class="form-control" value="{{caja ? caja.transferencia : ''}}" step="0.01">
+      </div>
+    </section>
+    <section>
+      <div class="item mb-3" *ngIf="caja && caja.Cheques.length > 0">
+        <div>
+          <label class="form-label">Cheques</label>
+        </div>
+        <div *ngFor="let cheque of caja.Cheques" class="cheques-lista">
+          <input class="form-control" type="text" [value]="cheque.numero" disabled>
+          <input class="form-control" type="text" [value]="cheque.fecha" disabled>
+          <input class="form-control" type="text" [value]="cheque.banco" disabled>
+          <input class="form-control" type="text" [value]="cheque.sucursal" disabled>
+          <input class="form-control" type="text" [value]="cheque.cuit" disabled>
+          <input class="form-control" type="number" [value]="cheque.importe" disabled>
+        </div>
+      </div>
+    </section>
+    <section class="conceptos-section">
+      <h3>Conceptos <span>El total es: {{totalConceptos | number:'1.2-2'}}</span><img *ngIf="caja && caja.activo" class="cursor-pointer" (click)="sumarConcepto()" src="../../../assets/img/plus-circle.svg" alt="agregar"></h3>
+      <div *ngIf="caja">
+        <div class="item2 mb-3" *ngFor="let concepto of caja.concepto_lista">
+          <input disabled type="text" class="form-control" value="{{concepto.concepto.concepto}}">
+          <input disabled type="number" class="form-control" value="{{concepto.importe}}" step="0.01">
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="titulo">
+    <h2>Editar Usuario</h2>
+    <button class="btn btn-outline-secondary" (click)="toggleEditarUsuario()">Volver</button>
+  </div>
+  <form>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" id="username" class="form-control" [(ngModel)]="user.username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" name="nombre" id="nombre" class="form-control" [(ngModel)]="user.nombre" name="nombre">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="activo" [(ngModel)]="user.activo" name="activo">
+      <label class="form-check-label" for="activo">Activo</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_abrir_dias" [(ngModel)]="user.permiso_abrir_dias" name="permiso_abrir_dias">
+      <label class="form-check-label" for="permiso_abrir_dias">Abrir Días</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_cerrar_dias" name="permiso_cerrar_dias" [(ngModel)]="user.permiso_cerrar_dias">
+      <label class="form-check-label" for="permiso_cerrar_dias">Cerrar Días</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_ingresar" name="permiso_ingresar" [(ngModel)]="user.permiso_ingresar">
+      <label class="form-check-label" for="permiso_ingresar">Ingresar Comprobantes</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_modificar" name="permiso_modificar" [(ngModel)]="user.permiso_modificar">
+      <label class="form-check-label" for="permiso_modificar">Modificar Comprobantes</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_cerrar_modificaciones" name="permiso_cerrar_modificaciones"  [(ngModel)]="user.permiso_cerrar_modificaciones">
+      <label class="form-check-label" for="permiso_cerrar_modificaciones">Cerrar Comprobantes</label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="permiso_modificar_usuarios" name="permiso_modificar_usuarios" [(ngModel)]="user.permiso_modificar_usuarios">
+      <label class="form-check-label" for="permiso_modificar_usuarios">Editar Usuarios</label>
+    </div>
+    <div class="div-btn">
+      <input type="submit" class="btn btn-primary" (click)="editarUsuario($event)" value="Confirmar">
+    </div>
+  </form>
+</div>

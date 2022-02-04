@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+<div class="center-msj" *ngIf="msj !== ''">
+  <p class="alert alert-success" role="alert">
+    {{msj}}
+  </p>
+</div>
+
+<div class="container">
+  <app-card
+    (click)="toggleSwitchDay()"
+    *ngIf="showIndex && (user.permiso_abrir_dias || user.permiso_cerrar_dias)"
+    title="Alta/Cierre Días"
+    text="Alta días a los cuales imputar los Recibos. Finalizado el día debe cerrarse y registrar la diferencia de caja."
+  ></app-card>
+  <app-aft-dia-form
+    *ngIf="showDia && (user.permiso_abrir_dias || user.permiso_cerrar_dias)"
+    (msj)="captarMsj($event)"
+  ></app-aft-dia-form>
+
+  <app-card
+    (click)="toggleSwitchRecibo()"
+    *ngIf="showIndex && user.permiso_ingresar"
+    title="Nuevo Recibo"
+    text="Alta de ingreso de fondos. Las formas de pago y montos no pueden modificarse."
+  ></app-card>
+  <app-aft-alta-form
+    *ngIf="showRecibo && user.permiso_ingresar"
+    (msj)="captarMsj($event)"
+  ></app-aft-alta-form>
+
+  <app-card
+  *ngIf="showIndex"
+  title="Lista de Recibos"
+  text="Búsqueda de Recibos, agregado de conceptos, impresión y cierre."
+  (click)="toggleShowListaCajas()"
+  ></app-card>
+  <app-aft-lista
+  *ngIf="showListaRecibos"
+  >
+  </app-aft-lista>
+
+  <app-card
+    *ngIf="showIndex"
+    title="Lista de Conceptos"
+    text="Permite listar los Conceptos y hacer un seguimiento de su pago."
+    (click)="switchListaConceptos()"
+  ></app-card>
+  <app-aft-lista-conceptos
+    *ngIf="showConceptos"
+  >
+  </app-aft-lista-conceptos>
+
+</div>

@@ -1,0 +1,38 @@
+.blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120%;
+  width: 100%;
+  z-index: 5000;
+  background: rgba(164, 164, 164, 0.365);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.container-cheques {
+  margin-top: 100px;
+  background: white;
+  padding: 40px 20px;
+  border-radius: 10px;
+  position: relative;
+  height: auto;
+}
+.boton-cerrar {
+  height: 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+a > img {
+  margin-right: 10px;
+}
+td {
+  vertical-align: middle;
+}
+.cursor-pointer {
+  cursor: pointer;
+}

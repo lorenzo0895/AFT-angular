@@ -1,0 +1,49 @@
+.container-cheque-alta {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.titulo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.btn {
+  width: 90px;
+  margin-left: 30px;
+}
+h3 {
+  margin-top: 20px;
+  width: 100%;
+}
+span {
+  font-size: 15px;
+}
+.div-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item {
+  min-width: 400px;
+  margin-right: 20px;
+}
+.btn-primary {
+  margin-left: 0;
+}
+input[type='number'] {
+  text-align: right;
+}

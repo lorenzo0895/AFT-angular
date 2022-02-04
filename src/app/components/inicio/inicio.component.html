@@ -1,0 +1,22 @@
+<app-nav></app-nav>
+<div class="container">
+  
+  <app-card
+    (click)="redirectTo('/cliente')"
+    title="Clientes"
+    text="Dar de alta, editar o eliminar clientes."
+  ></app-card>
+
+  <app-card
+    (click)="redirectTo('/aft')"
+    title="Adm. Fondos de Terceros"
+    text="Alta de Comp. de Caja, edición de netos y seguimiento de pagos."
+  ></app-card>
+
+  <app-card
+    (click)="redirectTo('/usuario')"
+    title="Usuarios"
+    text="Dar de alta, editar o eliminar usuarios (se requiere permisos especiales)."
+  ></app-card>
+
+</div>

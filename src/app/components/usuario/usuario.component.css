@@ -1,0 +1,10 @@
+.container {
+  margin-top: 20px;
+}
+.center-msj {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: -30px;
+}

@@ -1,0 +1,60 @@
+<div class="container-lista">
+  <div class="titulo">
+    <h2>Lista de Conceptos</h2>
+    <button class="btn btn-outline-secondary" (click)="switchListaConceptos()">Volver</button>
+  </div>
+  <div [formGroup]="formGroupFechas">
+    <div class="fechas">
+      <div class="display-flex">
+        <label for="desde" class="form-label label-space">Desde:</label>
+        <input type="date" name="desde" formControlName="desde" class="form-control" id="desde">
+      </div>
+      <div class="display-flex">
+        <label for="desde" class="form-label label-space">Hasta:</label>
+        <input type="date" name="hasta" formControlName="hasta" class="form-control" id="hasta">
+      </div>
+      <button class="btn btn-primary btn-buscar" (click)="buscarPorFecha()">Buscar</button>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="mb-3 display-flex">
+      <label for="desde" class="form-label label-space">Cliente:</label>
+      <select class="form-select" id="id_cliente" name="id_cliente" [(ngModel)]="id_cliente" (change)="filtrarCliente()">
+        <option *ngFor="let client of clientes" [value]="client.id_cliente">
+          {{client.apellido != '' ? client.apellido + ', ' + client.nombre : client.nombre}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="col-dia">Ingreso</th>
+        <th scope="col" class="col-dia">Pago</th>
+        <th scope="col" class="col-concepto">Concepto</th>
+        <th scope="col" class="col-cliente">Cliente</th>
+        <th scope="col" class="col-importe">Importe</th>
+        <th scope="col" class="col-cerrado">Pagado</th>
+        <th scope="col" class="col-ver">Ver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let concepto of conceptos, let i = index" [ngClass]="{'activo': concepto.pagado}">
+        <td class="col-dia">{{concepto.caja.fecha_fecha | date: 'dd/MM/yyyy'}}</td>
+        <td class="col-dia">{{concepto.fecha_pago ? (concepto.fecha_pago | date: 'dd/MM/yyyy') : '-'}}</td>
+        <td class="col-concepto">{{concepto.concepto.concepto}}</td>
+        <td class="col-cliente">{{concepto.caja.cliente.apellido + ', ' + concepto.caja.cliente.nombre}}</td>
+        <td class="col-importe">{{(concepto.importe) | number: '1.2-2'}}</td>
+        <td class="col-cerrado"><input type="checkbox" [checked]="concepto.pagado"
+          (click)="cerrarConcepto(concepto.id_concepto_lista,$event)" name="pagado"
+          [disabled]="!user.permiso_modificar"></td>
+        <td class="col-ver"><a class="btn btn-primary" [href]="'/aft/concepto/'+concepto.id_concepto_lista">Ver</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<app-concepto-cierre
+  *ngIf="showCierre"
+></app-concepto-cierre>

@@ -1,0 +1,52 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="container-cheque-alta">
+    <div class="titulo">
+      <h2>Alta de Cheque</h2>
+      <button class="btn btn-outline-secondary" onclick = "window.close()">Cerrar</button>
+    </div>
+    <div class="center-msj" *ngIf="msj !== ''">
+      <p class="alert alert-success" role="alert">
+        {{msj}}
+      </p>
+    </div>
+    <div class="center-msj" *ngIf="alert !== ''">
+      <p class="alert alert-warning" role="alert">
+        {{alert}}
+      </p>
+    </div>
+    <form>
+      <section>
+        <h3>Datos</h3>
+        <div class="item mb-3">
+          <label for="numero" class="form-label">Nº Cheque</label>
+          <input type="text" class="form-control" [(ngModel)]="numero" id="numero" name="numero">
+        </div>
+        <div class="item mb-3">
+          <label for="banco" class="form-label">Banco</label>
+          <input type="text" class="form-control" [(ngModel)]="banco" id="banco" name="banco">
+        </div>
+        <div class="item mb-3">
+          <label for="sucursal" class="form-label">Sucursal</label>
+          <input type="text" class="form-control" [(ngModel)]="sucursal" id="sucursal" name="sucursal">
+        </div>
+        <div class="item mb-3">
+          <label for="cuit" class="form-label">CUIT</label>
+          <input type="text" class="form-control" [(ngModel)]="cuit" id="cuit" name="cuit">
+        </div>
+        <div class="item mb-3">
+          <label for="fecha" class="form-label">Exigible al</label>
+          <input type="date" class="form-control" [(ngModel)]="fecha" id="fecha" name="fecha">
+        </div>
+        <div class="item mb-3">
+          <label for="importe" class="form-label">Importe</label>
+          <input type="number" class="form-control" step="0.01" [(ngModel)]="importe" id="importe" name="importe">
+        </div>
+      </section>
+
+      <div class="div-btn">
+        <input (click)="nuevoCheque()" type="submit" class="btn btn-primary" value="Dar Alta">
+      </div>
+    </form>
+  </div>
+</div>

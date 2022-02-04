@@ -1,0 +1,21 @@
+.container {
+  width: 400px;
+}
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.titulo > .btn-outline-secondary, .titulo > h3 {
+  margin: 0;
+}
+.div-btn {
+  display: flex;
+  justify-content: center;
+}
+.form-check {
+  margin-top: 5px;
+}
+.btn {
+  margin-top: 20px;
+}

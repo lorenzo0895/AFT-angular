@@ -1,0 +1,63 @@
+.center-msj {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: -30px;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.titulo {
+  display: flex;
+  align-items: center;
+}
+.btn {
+  width: 90px;
+  margin-left: 30px;
+}
+h3 {
+  margin-top: 20px;
+  width: 100%;
+}
+span {
+  font-size: 15px;
+}
+.div-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item {
+  min-width: 400px;
+  margin-right: 20px;
+}
+.btn-primary {
+  margin-left: 0;
+}
+input[type='number'] {
+  text-align: right;
+}
+.cursor-pointer {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.cheques-lista {
+  display: flex;
+  margin-bottom: 10px;
+}
+.cheques-lista > input {
+  width: 120px;
+  margin-right: 10px;
+}
+.cheques-lista > input[type="number"] {
+  text-align: end;
+}

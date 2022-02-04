@@ -1,0 +1,19 @@
+.container-dia {
+  width: 400px;
+}
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  width: 90px;
+}
+.div-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+form {
+  margin-bottom: 20px;
+}

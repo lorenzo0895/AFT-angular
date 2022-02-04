@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+<div class="container">
+  <input type="text" placeholder="Filtro" name="filtro" [(ngModel)]="filtro" (keyup)="filtrar()" class="form-control">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Apellido</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">CUIT</th>
+        <th scope="col">Activo</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientesAMostrar, let i = index">
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.cuit}}</td>
+        <td>{{cliente.activo ? 'Sí' : 'No'}}</td>
+        <td><button class="btn btn-primary">Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

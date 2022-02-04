@@ -1,0 +1,71 @@
+<div class="container-alta">
+  <div class="center-msj" *ngIf="alerta !== ''">
+    <p class="alert alert-warning" role="alert">
+      {{alerta}}
+    </p>
+  </div>
+  <app-aft-cheque
+    *ngIf="showCheque"
+    [cheques]="chequesLista"
+    (chequeEvent)="agregarCheque($event)"
+    (actualizarChequesEvent)="actualizarCheques()"
+  >
+  </app-aft-cheque>
+  <div class="titulo">
+    <h2>Alta de Recibo</h2>
+    <button class="btn btn-outline-secondary" (click)="toggleSwitchRecibo()">Volver</button>
+  </div>
+  <form (submit)="nuevaCaja()">
+    <section>
+
+      <h3>Datos</h3>
+      <div class="item mb-3">
+        <label for="cliente" class="form-label">Cliente</label>
+        <select class="form-select" id="fecha" [(ngModel)]="cliente" name="cliente">
+          <option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">{{cliente.apellido + ', ' + cliente.nombre}}</option>
+        </select>
+      </div>
+      <div class="item mb-3">
+        <label for="dia" class="form-label">Día</label>
+        <select class="form-select" id="dia" [(ngModel)]="dia" name="dia">
+          <option *ngFor="let dia of dias" [value]="dia.fecha | date: 'yyyy-MM-dd'">{{dia.fecha | date: 'dd/MM/yyyy' }}</option>
+        </select>
+      </div>
+      <div class="item mb-3">
+        <label for="detalle" class="form-label">Detalle</label>
+        <input type="text" class="form-control" [(ngModel)]="detalle" id="detalle" name="detalle">
+      </div>
+    </section>
+    <section>
+      <h3>Formas de Pago <span>El total es: {{total | number:'1.2-2'}}</span></h3>
+      <div class="item mb-3">
+        <label for="efectivo" class="form-label">Efectivo</label>
+        <input (keyup)="calcularTotal()" (mouseup)="calcularTotal()" type="number" class="form-control" [(ngModel)]="efectivo" id="efectivo" step="0.01" name="efectivo">
+      </div>
+      <div class="item mb-3">
+        <label for="transferencia" class="form-label">Transferencia</label>
+        <input (keyup)="calcularTotal()" (mouseup)="calcularTotal()" type="number" class="form-control" [(ngModel)]="transferencia" id="transferencia" step="0.01" name="transferencia">
+      </div>
+    </section>
+    <section>
+      <div class="item mb-3">
+        <div>
+          <label for="transferencia" class="form-label">Cheques</label>
+          <img (click)="switchChequeMenu()" class="cursor-pointer" src="../../../assets/img/plus-circle.svg" alt="agregar">
+        </div>
+        <div *ngFor="let cheque of cheques" class="cheques-lista">
+          <img class="cursor-pointer" src="../../../assets/img/dash-circle.svg" alt="borrar" (click)="sacarCheque(cheque)">
+          <input class="form-control" type="text" [value]="cheque.numero" disabled>
+          <input class="form-control" type="text" [value]="cheque.fecha" disabled>
+          <input class="form-control" type="text" [value]="cheque.banco" disabled>
+          <input class="form-control" type="text" [value]="cheque.sucursal" disabled>
+          <input class="form-control" type="text" [value]="cheque.cuit" disabled>
+          <input class="form-control" type="number" [value]="cheque.importe" disabled>
+        </div>
+      </div>
+    </section>
+    <div class="div-btn">
+      <input type="submit" class="btn btn-primary" value="Dar Alta">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+.contenido {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(127, 142, 181);
+}
+.formulario {
+  width: 450px;
+  height: 350px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.242);
+  padding: 30px;
+}
+h1 {
+  text-align: center;
+}
+.div-btn {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  margin-top: 20px;
+}

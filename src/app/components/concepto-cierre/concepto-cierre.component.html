@@ -1,0 +1,22 @@
+<div class="blur">
+  <div class="container-cheques" [formGroup]="form">
+    <img (click)="switchVentanaCierre()" class="boton-cerrar" src="../../../assets/img/botonCerrar.png" alt="cerrar">
+    <div class="mb-3 display-flex">
+      <label for="desde" class="form-label label-space">Medio de Pago:
+        <a href="/concepto" target="blank"><img src="../../../assets/img/plus-circle.svg" alt="agregar"></a>
+        <a (click)="actualizarMediosPago()" class="cursor-pointer"><img src="../../../assets/img/refresh.svg" alt="agregar"></a>
+      </label>
+      <select formControlName="concepto" class="form-select" id="id_cliente" name="id_cliente">
+        <option *ngFor="let c of form.get('concepto')?.value">{{c.concepto}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="desde" class="form-label label-space">Fecha de Pago:</label>
+      <input type="date" class="form-control" name="fecha" formControlName="fecha">
+    </div>
+    <div class="div-btn">
+      <input type="submit" class="btn btn-primary" value="Dar Alta">
+    </div>
+  </div>
+  
+</div>
