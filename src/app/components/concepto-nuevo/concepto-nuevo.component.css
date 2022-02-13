@@ -1,19 +1,19 @@
 .blur {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 120%;
+  height: 100%;
   width: 100%;
   z-index: 5000;
   background: rgba(164, 164, 164, 0.365);
   backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.container-cheques {
-  width: 450px;
+.container-concepto {
+  min-width: 400px;
   margin-top: 100px;
   background: white;
   padding: 40px 20px;

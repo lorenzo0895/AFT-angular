@@ -101,6 +101,10 @@ input[type='number'] {
 .item2 input[type="number"] {
   width: 150px;
 }
+.quitar {
+  margin-right: 10px;
+  cursor: pointer;
+}
 .cursor-pointer {
   cursor: pointer;
   margin-left: 10px;

@@ -81,4 +81,8 @@ export class UiService {
     this.subjectShowCierre.next(this.showCierre);
   }
 
+  switchNuevoConcepto() {
+    
+  }
+
 }

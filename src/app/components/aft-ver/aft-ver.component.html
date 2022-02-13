@@ -1,31 +1,46 @@
 <app-nav></app-nav>
+<app-concepto-nuevo
+  *ngIf="showConcepto"
+  (conceptoNuevo)="agregarConcepto($event)"
+>
+</app-concepto-nuevo>
 <div class="container container-caja">
   <div class="encabezado">
     <h2><img src="../../../assets/img/logo-color-grande.png" alt="logo"> Estudio Impositivo Spallione</h2>
   </div>
   <div class="titulo">
-    <h2>Comprobante de Caja Nº {{caja ? caja.id_caja : 0}}</h2>
+    <h2>Comprobante de Caja Nº {{caja?.id_caja}}</h2>
     <a type="submit" href="/aft" class="btn btn-outline-secondary">Volver</a>
     <button type="submit" class="btn btn-primary" (click)="print()">Imprimir</button>
-    <button type="submit" class="btn btn-danger" *ngIf="caja && caja.activo">Cerrar</button>
+    <button type="submit" class="btn btn-danger" *ngIf="caja?.activo" (click)="cerrarCaja(caja ? caja.id_caja : 0)">Cerrar</button>
   </div>
   <div class="div-form">
     <section>
+      <div class="center-msj" *ngIf="alert !== ''">
+        <p class="alert alert-warning" role="alert">
+          {{alert}}
+        </p>
+      </div>
+      <div class="center-msj" *ngIf="msj !== ''">
+        <p class="alert alert-success" role="alert">
+          {{msj}}
+        </p>
+      </div>
       <h3>Datos</h3>
       <div class="item mb-3">
         <label class="form-label">Cliente</label>
-        <input type="text" class="form-control" value="{{caja ? (caja.cliente.apellido + ', ' + caja.cliente.nombre) : ''}}" disabled>
+        <input type="text" class="form-control" value="{{caja?.cliente?.apellido + ', ' + caja?.cliente?.nombre}}" disabled>
       </div>
       <div class="item mb-3">
         <label for="dia" class="form-label">Día</label>
-        <input type="date" class="form-control" value="{{caja ? caja.fecha_fecha : ''}}" disabled>
+        <input type="date" class="form-control" value="{{caja?.fecha_fecha}}" disabled>
       </div>
     </section>
     <section class="detalle-section">
       <label for="detalle" class="form-label">Detalle</label>
       <div class="detalle-div">
         <input type="text" class="form-control" [(ngModel)]="detalle" id="detalle" name="detalle" disabled="{{caja ? !caja.activo : false}}">
-        <button *ngIf="caja && caja.activo" type="submit" class="btn btn-primary">Editar detalle</button>
+        <button *ngIf="caja?.activo" type="submit" class="btn btn-primary" (click)="editarDetalle()">Editar detalle</button>
       </div>
     </section>
     <section>
@@ -55,9 +70,11 @@
       </div>
     </section>
     <section class="conceptos-section">
-      <h3>Conceptos <span>El total es: {{totalConceptos | number:'1.2-2'}}</span><img *ngIf="caja && caja.activo" class="cursor-pointer" (click)="sumarConcepto()" src="../../../assets/img/plus-circle.svg" alt="agregar"></h3>
+      <h3>Conceptos <span>El total es: {{totalConceptos | number:'1.2-2'}}</span>
+        <img *ngIf="caja && caja.activo" class="cursor-pointer" (click)="switchShowConcepto()" src="../../../assets/img/plus-circle.svg" alt="agregar"></h3>
       <div *ngIf="caja">
         <div class="item2 mb-3" *ngFor="let concepto of caja.concepto_lista">
+          <img src="../../../assets/img/dash-circle.svg" alt="quitar" class="quitar" *ngIf="caja && caja.activo">
           <input disabled type="text" class="form-control" value="{{concepto.concepto.concepto}}">
           <input disabled type="number" class="form-control" value="{{concepto.importe}}" step="0.01">
         </div>

@@ -1,5 +1,6 @@
 <div class="blur">
-  <div class="container-cheques">
+  <div cdkDrag class="container-cheques">
+    <div cdkDragHandle class="mover"></div>
     <a href="/cheque" target="blank"><img src="../../../assets/img/plus-circle.svg" alt="agregar"></a>
     <a (click)="actualizarCheques()" class="cursor-pointer"><img src="../../../assets/img/refresh.svg" alt="agregar"></a>
     <img (click)="switchChequeMenu()" class="boton-cerrar" src="../../../assets/img/botonCerrar.png" alt="cerrar">

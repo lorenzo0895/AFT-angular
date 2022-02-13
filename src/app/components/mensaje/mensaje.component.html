@@ -1,0 +1,10 @@
+<div class="center-msj" *ngIf="text !== ''">
+  <p [ngClass]="{
+        'alert':true,
+        'alert-success':(type==='success'),
+        'alert-warning':(type==='warning')
+      }" 
+      role="alert">
+    {{text}}
+  </p>
+</div>

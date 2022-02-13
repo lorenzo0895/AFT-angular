@@ -12,12 +12,13 @@ import { UiService } from 'src/app/services/ui.service';
 export class AftDiaFormComponent implements OnInit {
 
   @Output() msj = new EventEmitter<string>();
+  alert:string = '';
 
   user: any;
   showIndex: boolean = true;
   showDia: boolean = false;
   subscription?: Subscription;
-  file: Array<File>;
+  file: Array<File> = [];
 
   newDay: Date;
   activos: any[] = [];
@@ -43,8 +44,6 @@ export class AftDiaFormComponent implements OnInit {
           el.sumaImporte = value;
         });
       });
-      // this.closeDay = this.activos[0].fecha;
-      
     });
   }
 
@@ -53,9 +52,14 @@ export class AftDiaFormComponent implements OnInit {
   }
 
   createNewDay() {
-    this.dayService.newDay(this.newDay).subscribe(value => {
-      this.msj.emit('Día cargado correctamente.');
-      this.toggleSwitchDay();
+    this.dayService.newDay(this.newDay).subscribe({
+      next: value => {
+        this.msj.emit('Día cargado correctamente.');
+        this.toggleSwitchDay();
+      },
+      error: error => {
+        this.alert = error?.error?.message;
+      }
     });
   }
 

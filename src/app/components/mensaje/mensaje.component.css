@@ -1,0 +1,10 @@
+.center-msj {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+p {
+  padding: 5px 10px;
+  margin: 0;
+}

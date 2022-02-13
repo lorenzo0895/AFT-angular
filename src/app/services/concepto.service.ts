@@ -24,4 +24,8 @@ export class ConceptoService {
     return this.http.patch(this.uriLista+id, {});
   }
 
+  agregarConcepto(obj:any) {
+    return this.http.post(this.uriLista, obj);
+  }
+
 }

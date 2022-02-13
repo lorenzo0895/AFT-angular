@@ -1,5 +1,6 @@
 <div class="blur">
-  <div class="container-cheques" [formGroup]="form">
+  <div class="container-cheques" cdkDrag [formGroup]="form">
+    <div cdkDragHandle class="mover"></div>
     <img (click)="switchVentanaCierre()" class="boton-cerrar" src="../../../assets/img/botonCerrar.png" alt="cerrar">
     <div class="mb-3 display-flex">
       <label for="desde" class="form-label label-space">Medio de Pago:
@@ -15,7 +16,7 @@
       <input type="date" class="form-control" name="fecha" formControlName="fecha">
     </div>
     <div class="div-btn">
-      <input type="submit" class="btn btn-primary" value="Dar Alta">
+      <input type="submit" class="btn btn-primary" value="Marcar pagado">
     </div>
   </div>
   

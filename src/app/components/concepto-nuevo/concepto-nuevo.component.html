@@ -1,0 +1,27 @@
+<div class="blur">
+  <form class="container-concepto" cdkDrag [formGroup]="form">
+    <div cdkDragHandle class="mover"></div>
+    <img class="boton-cerrar" src="../../../assets/img/botonCerrar.png" (click)="switchShowConcepto()" alt="cerrar">
+    <div class="mb-3 display-flex">
+      <label for="desde" class="form-label label-space">Concepto:
+        <a href="/concepto" target="blank"><img src="../../../assets/img/plus-circle.svg" alt="agregar"></a>
+        <a class="cursor-pointer"><img src="../../../assets/img/refresh.svg" alt="agregar"></a>
+      </label>
+      <select class="form-select" id="id_cliente" formControlName="concepto">
+        <option [ngValue]="null" disabled>Elige un concepto</option>
+        <option *ngFor="let c of conceptos" [ngValue]="c.id_concepto">{{c.concepto}}</option>
+      </select>
+      <app-mensaje *ngIf="concepto?.touched && concepto?.hasError('required')" text="Debe seleccionar un concepto" type="warning"></app-mensaje>
+    </div>
+    <div class="mb-3">
+      <label for="importe" class="form-label label-space">Importe:</label>
+      <input type="number" class="form-control" formControlName="importe">
+      <app-mensaje *ngIf="importe?.touched && importe?.hasError('required')" text="Debe indicar un importe" type="warning"></app-mensaje>
+      <app-mensaje *ngIf="importe?.touched && importe?.errors?.['min']" text="El importe debe ser mayor a 0" type="warning"></app-mensaje>
+    </div>
+    <div class="div-btn">
+      <input type="submit" class="btn btn-primary" (click)="agregarConcepto($event)" value="Añadir Concepto">
+    </div>
+  </form>
+
+</div>

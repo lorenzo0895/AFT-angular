@@ -24,6 +24,10 @@ import { AftListaComponent } from './components/aft-lista/aft-lista.component';
 import { AftVerComponent } from './components/aft-ver/aft-ver.component';
 import { AftListaConceptosComponent } from './components/aft-lista-conceptos/aft-lista-conceptos.component';
 import { ConceptoCierreComponent } from './components/concepto-cierre/concepto-cierre.component';
+import { ConceptoNuevoComponent } from './components/concepto-nuevo/concepto-nuevo.component';
+
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MensajeComponent } from './components/mensaje/mensaje.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +47,17 @@ import { ConceptoCierreComponent } from './components/concepto-cierre/concepto-c
     AftListaComponent,
     AftVerComponent,
     AftListaConceptosComponent,
-    ConceptoCierreComponent
+    ConceptoCierreComponent,
+    ConceptoNuevoComponent,
+    MensajeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},

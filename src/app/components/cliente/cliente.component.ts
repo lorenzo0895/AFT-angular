@@ -26,8 +26,6 @@ export class ClienteComponent implements OnInit {
     let regExpr = new RegExp(this.filtro.toLowerCase().replace(/\s/g, ''));
     this.clientesAMostrar = this.clientes.filter(el => {
       return (
-        regExpr.test(el.apellido.toLowerCase().replace(/\s/g, '')) || 
-        regExpr.test(el.nombre.toLowerCase().replace(/\s/g, '')) ||
         regExpr.test((el.nombre.toLowerCase() + el.apellido.toLowerCase()).replace(/\s/g, '')) ||
         regExpr.test((el.apellido.toLowerCase() + el.nombre.toLowerCase()).replace(/\s/g, ''))
       );

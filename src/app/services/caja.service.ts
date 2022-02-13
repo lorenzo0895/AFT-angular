@@ -8,25 +8,33 @@ import { Caja } from '../models/Caja';
 })
 export class CajaService {
 
-  uri:string = '/api/caja/';
+  uri: string = '/api/caja/';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCajas() {
     return this.http.get<any[]>(this.uri);
   }
 
-  getCaja(id:string):Observable<Caja> {
-    return this.http.get<Caja>(this.uri+id);
+  getCaja(id: string): Observable<Caja> {
+    return this.http.get<Caja>(this.uri + id);
   }
 
-  getCajaBetweenDates(obj:any) {
+  getCajaBetweenDates(obj: any) {
     let { desde, hasta } = obj;
-    return this.http.get<Caja[]>(this.uri+'filtro/fecha?desde='+desde+'&hasta='+hasta);
+    return this.http.get<Caja[]>(this.uri + 'filtro/fecha?desde=' + desde + '&hasta=' + hasta);
   }
 
-  newCaja(body:any) {
+  newCaja(body: any) {
     return this.http.post(this.uri, body);
+  }
+
+  cerrarCaja(id: number) {
+    return this.http.patch(this.uri, { id });
+  }
+
+  editarDetalle(id:number, detalle:string) {
+    return this.http.patch(this.uri + 'detalle', {id, detalle})
   }
 
 }

@@ -15,7 +15,7 @@ import { UiService } from 'src/app/services/ui.service';
 export class AftAltaFormComponent implements OnInit {
 
   @Output() msj = new EventEmitter<string>();
-  alerta:string = '';
+  alert:string = '';
 
   chequesLista:any[];
   showIndex:boolean = true;
@@ -87,13 +87,16 @@ export class AftAltaFormComponent implements OnInit {
       efectivo: this.efectivo,
       transferencia: this.transferencia,
       cheques: this.cheques
-    }
-    this.cajaService.newCaja(obj).subscribe(value => {
-      this.msj.emit('Comprobante de Caja cargado correctamente');
-      this.toggleSwitchRecibo();
-      return;
+    };
+    this.cajaService.newCaja(obj).subscribe({
+      next: value => {
+        this.msj.emit('Comprobante de Caja cargado correctamente');
+        this.toggleSwitchRecibo();
+      },
+      error: error => {
+        this.alert = error.error.message;
+      }
     });
-      this.alerta = 'Error al cargar Comprobante de Caja';
   }
 
   actualizarCheques() {

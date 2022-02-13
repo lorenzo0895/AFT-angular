@@ -6,6 +6,11 @@
 
   <div *ngIf="user.permiso_abrir_dias">
     <h3>Alta de días</h3>
+    <div class="center-msj" *ngIf="alert !== ''">
+      <p class="alert alert-warning" role="alert">
+        {{alert}}
+      </p>
+    </div>
     <form (submit)="createNewDay()">
       <div class="mb-3">
         <label for="dia" class="form-label">Día</label>

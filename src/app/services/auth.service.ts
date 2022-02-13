@@ -31,7 +31,7 @@ export class AuthService {
   isAuth():boolean {
     let token = localStorage.getItem('token');
     token = token ? token : '';
-    const decoded:any = this.jwtHelper.decodeToken(token).data;
+    const decoded:any = this.jwtHelper.decodeToken(token)?.data;
     if (this.jwtHelper.isTokenExpired(token) || !localStorage.getItem('token') || !decoded.activo) {
       return false;
     } else {
